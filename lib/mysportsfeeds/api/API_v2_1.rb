@@ -209,7 +209,7 @@ module Mysportsfeeds
               raise Exception.new("Unsupported format '" + output_format + "'.")
             end
 
-            url = determine_url(league, feed, output_format, params)
+            url = determine_url(league, season, feed, output_format, params)
 
             if @verbose
               puts "Making API request to '#{url}'."
