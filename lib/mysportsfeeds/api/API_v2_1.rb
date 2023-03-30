@@ -201,10 +201,6 @@ module Mysportsfeeds
               end
             end
 
-            if !params.key?("force")
-              params['force'] = 'false'
-            end
-
             if __verify_feed_name(feed) == false
               raise Exception.new("Unknown feed '" + feed + "'.")
             end
