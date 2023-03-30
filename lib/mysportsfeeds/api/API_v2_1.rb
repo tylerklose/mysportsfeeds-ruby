@@ -170,6 +170,21 @@ module Mysportsfeeds
           @auth = {"username" => username, "password" => password}
         end
 
+        def determine_url(league, season, feed, output_format, params)
+          raise AssertionError("You must provide a season for this request.") unless season
+
+          case feed
+          when 'seasonal_games', 'daily_games', 'weekly_games'
+            url = "{@base_uri.to_s}/{league}/{season}/games.{output}"
+          else
+            if feed == 'current_season'
+              url = __league_only_url(league, feed, output_format, params)
+            else
+              url = __league_and_season_url(league, season, feed, output_format, params)
+            end
+          end
+        end
+
         # Request data (and store it if applicable)
         def get_data(league, season, feed, output_format, kwargs)
           if !@auth
@@ -198,11 +213,7 @@ module Mysportsfeeds
               raise Exception.new("Unsupported format '" + output_format + "'.")
             end
 
-            if feed == 'current_season'
-              url = __league_only_url(league, feed, output_format, params)
-            else
-              url = __league_and_season_url(league, season, feed, output_format, params)
-            end
+            url = determine_url(league, feed, output_format, params)
 
             if @verbose
               puts "Making API request to '#{url}'."
