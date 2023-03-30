@@ -175,7 +175,7 @@ module Mysportsfeeds
 
           case feed
           when 'seasonal_games', 'daily_games', 'weekly_games'
-            url = "#{@base_uri.to_s}/#{league}/#{season}/games.#{output}"
+            url = "#{@base_uri.to_s}/#{league}/#{season}/games.#{output_format}"
           else
             if feed == 'current_season'
               url = __league_only_url(league, feed, output_format, params)
