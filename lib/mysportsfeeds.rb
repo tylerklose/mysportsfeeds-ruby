@@ -1,6 +1,7 @@
 require "mysportsfeeds/api/API_v1_0"
 require "mysportsfeeds/api/API_v1_1"
 require "mysportsfeeds/api/API_v1_2"
+require "mysportsfeeds/api/API_v2_1"
 
 ### Main class for all interaction with the MySportsFeeds API
 class MySportsFeeds
@@ -23,6 +24,8 @@ class MySportsFeeds
             @api_instance = Mysportsfeeds::Api::API_v1_1.new(@verbose, @store_type, @store_location)
         when '1.2'
             @api_instance = Mysportsfeeds::Api::API_v1_2.new(@verbose, @store_type, @store_location)
+        when '2.1'
+            @api_instance = Mysportsfeeds::Api::API_v2_1.new(@verbose, @store_type, @store_location)
         else
             raise Exception.new("Unrecognized version specified.  Supported versions are: '1.0', '1.1', '1.2'")
         end
@@ -30,7 +33,7 @@ class MySportsFeeds
 
     # Make sure the version is supported
     def __verify_version(version)
-        unless %w{1.0 1.1 1.2}.include?(version.to_s)
+        unless %w{1.0 1.1 1.2 2.1}.include?(version.to_s)
             raise Exception.new("Unrecognized version specified.  Supported versions are: '1.0', '1.1', '1.2'")
         end
     end

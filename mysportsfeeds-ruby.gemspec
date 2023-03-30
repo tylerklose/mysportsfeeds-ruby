@@ -6,9 +6,9 @@ require "mysportsfeeds/version"
 Gem::Specification.new do |spec|
   spec.name          = "mysportsfeeds-ruby"
   spec.version       = Mysportsfeeds::Ruby::VERSION
-  spec.authors       = ["MySportsFeeds", "Brad Barkhouse"]
-  spec.email         = ["brad.barkhouse@mysportsfeeds.com"]
-  spec.required_ruby_version = '>= 2.2.0'
+  spec.authors       = ["MySportsFeeds", "Brad Barkhouse", "Tyler Klose"]
+  spec.email         = ["brad.barkhouse@mysportsfeeds.com", "tylerklose@gmail.com"]
+  spec.required_ruby_version = '>= 3.1.0'
 
   spec.summary       = "MySportsFeeds API Ruby Client"
   spec.description   = "Easily retrieve sports data from the MySportsFeeds API"
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 #  spec.add_runtime_dependency "fileutils", "~> 0.7"
 #  spec.add_runtime_dependency "json", "~> 2.1"
 
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.2"
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end
